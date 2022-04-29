@@ -32,7 +32,6 @@
     <ProjectReference Include="..\..\src\Wechaty.OpenApi.HttpApi\Wechaty.OpenApi.HttpApi.csproj" />
     <ProjectReference Include="..\..\src\Wechaty.OpenApi.Application\Wechaty.OpenApi.Application.csproj" />
     <ProjectReference Include="..\..\src\Wechaty.OpenApi.EntityFrameworkCore\Wechaty.OpenApi.EntityFrameworkCore.csproj" />
-    <ProjectReference Include="..\Wechaty.OpenApi.Host.Shared\Wechaty.OpenApi.Host.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>

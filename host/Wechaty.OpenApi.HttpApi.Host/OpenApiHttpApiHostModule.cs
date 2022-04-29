@@ -11,7 +11,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Wechaty.OpenApi.EntityFrameworkCore;
-using Wechaty.OpenApi.MultiTenancy;
 using StackExchange.Redis;
 using Microsoft.OpenApi.Models;
 using Volo.Abp;
@@ -38,16 +37,16 @@ namespace Wechaty.OpenApi;
 
 [DependsOn(
     typeof(OpenApiApplicationModule),
-    typeof(OpenApiEntityFrameworkCoreModule),
+    //typeof(OpenApiEntityFrameworkCoreModule),
     typeof(OpenApiHttpApiModule),
-    typeof(AbpAspNetCoreMvcUiMultiTenancyModule),
+    //typeof(AbpAspNetCoreMvcUiMultiTenancyModule),
     typeof(AbpAutofacModule),
-    typeof(AbpCachingStackExchangeRedisModule),
-    typeof(AbpEntityFrameworkCoreSqlServerModule),
-    typeof(AbpAuditLoggingEntityFrameworkCoreModule),
-    typeof(AbpPermissionManagementEntityFrameworkCoreModule),
-    typeof(AbpSettingManagementEntityFrameworkCoreModule),
-    typeof(AbpTenantManagementEntityFrameworkCoreModule),
+    //typeof(AbpCachingStackExchangeRedisModule),
+    //typeof(AbpEntityFrameworkCoreSqlServerModule),
+    //typeof(AbpAuditLoggingEntityFrameworkCoreModule),
+    //typeof(AbpPermissionManagementEntityFrameworkCoreModule),
+    //typeof(AbpSettingManagementEntityFrameworkCoreModule),
+    //typeof(AbpTenantManagementEntityFrameworkCoreModule),
     typeof(AbpAspNetCoreSerilogModule),
     typeof(AbpSwashbuckleModule)
     )]
@@ -59,15 +58,15 @@ public class OpenApiHttpApiHostModule : AbpModule
         var hostingEnvironment = context.Services.GetHostingEnvironment();
         var configuration = context.Services.GetConfiguration();
 
-        Configure<AbpDbContextOptions>(options =>
-        {
-            options.UseSqlServer();
-        });
+        //Configure<AbpDbContextOptions>(options =>
+        //{
+        //    options.UseSqlServer();
+        //});
 
-        Configure<AbpMultiTenancyOptions>(options =>
-        {
-            options.IsEnabled = MultiTenancyConsts.IsEnabled;
-        });
+        //Configure<AbpMultiTenancyOptions>(options =>
+        //{
+        //    options.IsEnabled = MultiTenancyConsts.IsEnabled;
+        //});
 
         if (hostingEnvironment.IsDevelopment())
         {
@@ -80,63 +79,67 @@ public class OpenApiHttpApiHostModule : AbpModule
             });
         }
 
-        
+        //context.Services.AddAbpSwaggerGenWithOAuth(
+        //    configuration["AuthServer:Authority"],
+        //    new Dictionary<string, string>
+        //    {
+        //        {"OpenApi", "OpenApi API"}
+        //    },
+        //    options =>
+        //    {
+        //        options.SwaggerDoc("v1", new OpenApiInfo { Title = "OpenApi API", Version = "v1" });
+        //        options.DocInclusionPredicate((docName, description) => true);
+        //        options.CustomSchemaIds(type => type.FullName);
+        //    });
 
-        context.Services.AddAbpSwaggerGenWithOAuth(
-            configuration["AuthServer:Authority"],
-            new Dictionary<string, string>
-            {
-                {"OpenApi", "OpenApi API"}
-            },
-            options =>
-            {
-                options.SwaggerDoc("v1", new OpenApiInfo {Title = "OpenApi API", Version = "v1"});
-                options.DocInclusionPredicate((docName, description) => true);
-                options.CustomSchemaIds(type => type.FullName);
-            });
-
-        Configure<AbpLocalizationOptions>(options =>
-        {
-            options.Languages.Add(new LanguageInfo("ar", "ar", "العربية"));
-            options.Languages.Add(new LanguageInfo("cs", "cs", "Čeština"));
-            options.Languages.Add(new LanguageInfo("en", "en", "English"));
-            options.Languages.Add(new LanguageInfo("en-GB", "en-GB", "English (UK)"));
-            options.Languages.Add(new LanguageInfo("fi", "fi", "Finnish"));
-            options.Languages.Add(new LanguageInfo("fr", "fr", "Français"));
-            options.Languages.Add(new LanguageInfo("hi", "hi", "Hindi", "in"));
-            options.Languages.Add(new LanguageInfo("is", "is", "Icelandic", "is"));
-            options.Languages.Add(new LanguageInfo("it", "it", "Italiano", "it"));
-            options.Languages.Add(new LanguageInfo("hu", "hu", "Magyar"));
-            options.Languages.Add(new LanguageInfo("pt-BR", "pt-BR", "Português"));
-            options.Languages.Add(new LanguageInfo("ro-RO", "ro-RO", "Română"));
-            options.Languages.Add(new LanguageInfo("ru", "ru", "Русский"));
-            options.Languages.Add(new LanguageInfo("sk", "sk", "Slovak"));
-            options.Languages.Add(new LanguageInfo("tr", "tr", "Türkçe"));
-            options.Languages.Add(new LanguageInfo("zh-Hans", "zh-Hans", "简体中文"));
-            options.Languages.Add(new LanguageInfo("zh-Hant", "zh-Hant", "繁體中文"));
-            options.Languages.Add(new LanguageInfo("de-DE", "de-DE", "Deutsch"));
-            options.Languages.Add(new LanguageInfo("es", "es", "Español"));
+        context.Services.AddAbpSwaggerGen(options => {
+            options.SwaggerDoc("v1", new OpenApiInfo { Title = "OpenApi API", Version = "v1" });
+            options.DocInclusionPredicate((docName, description) => true);
+            options.CustomSchemaIds(type => type.FullName);
         });
 
-        context.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            .AddJwtBearer(options =>
-            {
-                options.Authority = configuration["AuthServer:Authority"];
-                options.RequireHttpsMetadata = Convert.ToBoolean(configuration["AuthServer:RequireHttpsMetadata"]);
-                options.Audience = "OpenApi";
-            });
+        //Configure<AbpLocalizationOptions>(options =>
+        //{
+        //    options.Languages.Add(new LanguageInfo("ar", "ar", "العربية"));
+        //    options.Languages.Add(new LanguageInfo("cs", "cs", "Čeština"));
+        //    options.Languages.Add(new LanguageInfo("en", "en", "English"));
+        //    options.Languages.Add(new LanguageInfo("en-GB", "en-GB", "English (UK)"));
+        //    options.Languages.Add(new LanguageInfo("fi", "fi", "Finnish"));
+        //    options.Languages.Add(new LanguageInfo("fr", "fr", "Français"));
+        //    options.Languages.Add(new LanguageInfo("hi", "hi", "Hindi", "in"));
+        //    options.Languages.Add(new LanguageInfo("is", "is", "Icelandic", "is"));
+        //    options.Languages.Add(new LanguageInfo("it", "it", "Italiano", "it"));
+        //    options.Languages.Add(new LanguageInfo("hu", "hu", "Magyar"));
+        //    options.Languages.Add(new LanguageInfo("pt-BR", "pt-BR", "Português"));
+        //    options.Languages.Add(new LanguageInfo("ro-RO", "ro-RO", "Română"));
+        //    options.Languages.Add(new LanguageInfo("ru", "ru", "Русский"));
+        //    options.Languages.Add(new LanguageInfo("sk", "sk", "Slovak"));
+        //    options.Languages.Add(new LanguageInfo("tr", "tr", "Türkçe"));
+        //    options.Languages.Add(new LanguageInfo("zh-Hans", "zh-Hans", "简体中文"));
+        //    options.Languages.Add(new LanguageInfo("zh-Hant", "zh-Hant", "繁體中文"));
+        //    options.Languages.Add(new LanguageInfo("de-DE", "de-DE", "Deutsch"));
+        //    options.Languages.Add(new LanguageInfo("es", "es", "Español"));
+        //});
 
-        Configure<AbpDistributedCacheOptions>(options =>
-        {
-            options.KeyPrefix = "OpenApi:";
-        });
+        //context.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        //    .AddJwtBearer(options =>
+        //    {
+        //        options.Authority = configuration["AuthServer:Authority"];
+        //        options.RequireHttpsMetadata = Convert.ToBoolean(configuration["AuthServer:RequireHttpsMetadata"]);
+        //        options.Audience = "OpenApi";
+        //    });
 
-        var dataProtectionBuilder = context.Services.AddDataProtection().SetApplicationName("OpenApi");
-        if (!hostingEnvironment.IsDevelopment())
-        {
-            var redis = ConnectionMultiplexer.Connect(configuration["Redis:Configuration"]);
-            dataProtectionBuilder.PersistKeysToStackExchangeRedis(redis, "OpenApi-Protection-Keys");
-        }
+        //Configure<AbpDistributedCacheOptions>(options =>
+        //{
+        //    options.KeyPrefix = "OpenApi:";
+        //});
+
+        //var dataProtectionBuilder = context.Services.AddDataProtection().SetApplicationName("OpenApi");
+        //if (!hostingEnvironment.IsDevelopment())
+        //{
+        //    var redis = ConnectionMultiplexer.Connect(configuration["Redis:Configuration"]);
+        //    dataProtectionBuilder.PersistKeysToStackExchangeRedis(redis, "OpenApi-Protection-Keys");
+        //}
 
         context.Services.AddCors(options =>
         {
@@ -177,24 +180,24 @@ public class OpenApiHttpApiHostModule : AbpModule
         app.UseStaticFiles();
         app.UseRouting();
         app.UseCors();
-        app.UseAuthentication();
-        if (MultiTenancyConsts.IsEnabled)
-        {
-            app.UseMultiTenancy();
-        }
+        //app.UseAuthentication();
+        //if (MultiTenancyConsts.IsEnabled)
+        //{
+        //    app.UseMultiTenancy();
+        //}
         app.UseAbpRequestLocalization();
-        app.UseAuthorization();
+        //app.UseAuthorization();
         app.UseSwagger();
         app.UseAbpSwaggerUI(options =>
         {
             options.SwaggerEndpoint("/swagger/v1/swagger.json", "Support APP API");
 
-            var configuration = context.GetConfiguration();
-            options.OAuthClientId(configuration["AuthServer:SwaggerClientId"]);
-            options.OAuthClientSecret(configuration["AuthServer:SwaggerClientSecret"]);
-            options.OAuthScopes("OpenApi");
+            //var configuration = context.GetConfiguration();
+            //options.OAuthClientId(configuration["AuthServer:SwaggerClientId"]);
+            //options.OAuthClientSecret(configuration["AuthServer:SwaggerClientSecret"]);
+            //options.OAuthScopes("OpenApi");
         });
-        app.UseAuditing();
+        //app.UseAuditing();
         app.UseAbpSerilogEnrichers();
         app.UseConfiguredEndpoints();
     }
