@@ -5,9 +5,7 @@ using Volo.Abp.Authorization;
 namespace Wechaty.OpenApi;
 
 [DependsOn(
-    typeof(OpenApiDomainSharedModule),
-    typeof(AbpDddApplicationContractsModule),
-    typeof(AbpAuthorizationModule)
+    typeof(AbpDddApplicationContractsModule)
     )]
 public class OpenApiApplicationContractsModule : AbpModule
 {

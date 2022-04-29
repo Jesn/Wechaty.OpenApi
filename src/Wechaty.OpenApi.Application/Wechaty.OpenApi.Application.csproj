@@ -11,7 +11,6 @@
     <PackageReference Include="Volo.Abp.Ddd.Application" Version="5.2.1" />
     <PackageReference Include="Wechaty.GrpcClient.Factory" Version="0.2.4" />
     <ProjectReference Include="..\Wechaty.OpenApi.Application.Contracts\Wechaty.OpenApi.Application.Contracts.csproj" />
-    <ProjectReference Include="..\Wechaty.OpenApi.Domain\Wechaty.OpenApi.Domain.csproj" />
   </ItemGroup>
 
 </Project>

@@ -11,7 +11,6 @@
     <PackageReference Include="Volo.Abp.Authorization" Version="5.2.1" />
     <PackageReference Include="Wechaty.Module.FileBox" Version="0.2.4" />
     <PackageReference Include="Wechaty.Module.Puppet" Version="0.2.4" />
-    <ProjectReference Include="..\Wechaty.OpenApi.Domain.Shared\Wechaty.OpenApi.Domain.Shared.csproj" />
   </ItemGroup>
 
 </Project>

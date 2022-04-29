@@ -6,7 +6,6 @@ using Volo.Abp.Application;
 namespace Wechaty.OpenApi;
 
 [DependsOn(
-    typeof(OpenApiDomainModule),
     typeof(OpenApiApplicationContractsModule),
     typeof(AbpDddApplicationModule),
     typeof(AbpAutoMapperModule)

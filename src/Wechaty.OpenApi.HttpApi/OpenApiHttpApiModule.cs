@@ -1,5 +1,4 @@
 ﻿using Localization.Resources.AbpUi;
-using Wechaty.OpenApi.Localization;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
@@ -22,11 +21,6 @@ public class OpenApiHttpApiModule : AbpModule
 
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
-        Configure<AbpLocalizationOptions>(options =>
-        {
-            options.Resources
-                .Get<OpenApiResource>()
-                .AddBaseTypes(typeof(AbpUiResource));
-        });
+        
     }
 }

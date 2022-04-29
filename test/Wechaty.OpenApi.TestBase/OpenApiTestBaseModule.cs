@@ -10,9 +10,7 @@ namespace Wechaty.OpenApi;
 
 [DependsOn(
     typeof(AbpAutofacModule),
-    typeof(AbpTestBaseModule),
-    typeof(AbpAuthorizationModule),
-    typeof(OpenApiDomainModule)
+    typeof(AbpTestBaseModule)
     )]
 public class OpenApiTestBaseModule : AbpModule
 {

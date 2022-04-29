@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Wechaty.OpenApi.Application\Wechaty.OpenApi.Application.csproj" />
-    <ProjectReference Include="..\Wechaty.OpenApi.Domain.Tests\Wechaty.OpenApi.Domain.Tests.csproj" />
+    <ProjectReference Include="..\Wechaty.OpenApi.TestBase\Wechaty.OpenApi.TestBase.csproj" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
   </ItemGroup>
 
