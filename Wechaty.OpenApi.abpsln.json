@@ -1,0 +1,7 @@
+{
+  "modules": {
+    "Wechaty.OpenApi": {
+      "path": "Wechaty.OpenApi.abpmdl.json"
+    }
+  }
+}

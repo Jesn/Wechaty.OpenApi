@@ -1,0 +1,79 @@
+{
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {},
+      "host": {}
+    }
+  },
+  "packages": {
+    "Wechaty.OpenApi.Domain.Shared": {
+      "path": "src/Wechaty.OpenApi.Domain.Shared/Wechaty.OpenApi.Domain.Shared.abppkg.json",
+      "folder": "src"
+    },
+    "Wechaty.OpenApi.Domain": {
+      "path": "src/Wechaty.OpenApi.Domain/Wechaty.OpenApi.Domain.abppkg.json",
+      "folder": "src"
+    },
+    "Wechaty.OpenApi.Application.Contracts": {
+      "path": "src/Wechaty.OpenApi.Application.Contracts/Wechaty.OpenApi.Application.Contracts.abppkg.json",
+      "folder": "src"
+    },
+    "Wechaty.OpenApi.Application": {
+      "path": "src/Wechaty.OpenApi.Application/Wechaty.OpenApi.Application.abppkg.json",
+      "folder": "src"
+    },
+    "Wechaty.OpenApi.EntityFrameworkCore": {
+      "path": "src/Wechaty.OpenApi.EntityFrameworkCore/Wechaty.OpenApi.EntityFrameworkCore.abppkg.json",
+      "folder": "src"
+    },
+    "Wechaty.OpenApi.MongoDB": {
+      "path": "src/Wechaty.OpenApi.MongoDB/Wechaty.OpenApi.MongoDB.abppkg.json",
+      "folder": "src"
+    },
+    "Wechaty.OpenApi.HttpApi": {
+      "path": "src/Wechaty.OpenApi.HttpApi/Wechaty.OpenApi.HttpApi.abppkg.json",
+      "folder": "src"
+    },
+    "Wechaty.OpenApi.HttpApi.Client": {
+      "path": "src/Wechaty.OpenApi.HttpApi.Client/Wechaty.OpenApi.HttpApi.Client.abppkg.json",
+      "folder": "src"
+    },
+    "Wechaty.OpenApi.TestBase": {
+      "path": "test/Wechaty.OpenApi.TestBase/Wechaty.OpenApi.TestBase.abppkg.json",
+      "folder": "test"
+    },
+    "Wechaty.OpenApi.EntityFrameworkCore.Tests": {
+      "path": "test/Wechaty.OpenApi.EntityFrameworkCore.Tests/Wechaty.OpenApi.EntityFrameworkCore.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "Wechaty.OpenApi.MongoDB.Tests": {
+      "path": "test/Wechaty.OpenApi.MongoDB.Tests/Wechaty.OpenApi.MongoDB.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "Wechaty.OpenApi.Domain.Tests": {
+      "path": "test/Wechaty.OpenApi.Domain.Tests/Wechaty.OpenApi.Domain.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "Wechaty.OpenApi.Application.Tests": {
+      "path": "test/Wechaty.OpenApi.Application.Tests/Wechaty.OpenApi.Application.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "Wechaty.OpenApi.HttpApi.Host": {
+      "path": "host/Wechaty.OpenApi.HttpApi.Host/Wechaty.OpenApi.HttpApi.Host.abppkg.json",
+      "folder": "host"
+    },
+    "Wechaty.OpenApi.HttpApi.Client.ConsoleTestApp": {
+      "path": "test/Wechaty.OpenApi.HttpApi.Client.ConsoleTestApp/Wechaty.OpenApi.HttpApi.Client.ConsoleTestApp.abppkg.json",
+      "folder": "test"
+    },
+    "Wechaty.OpenApi.IdentityServer": {
+      "path": "host/Wechaty.OpenApi.IdentityServer/Wechaty.OpenApi.IdentityServer.abppkg.json",
+      "folder": "host"
+    },
+    "Wechaty.OpenApi.Host.Shared": {
+      "path": "host/Wechaty.OpenApi.Host.Shared/Wechaty.OpenApi.Host.Shared.abppkg.json",
+      "folder": "host"
+    }
+  }
+}
