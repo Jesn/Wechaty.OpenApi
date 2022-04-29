@@ -4,7 +4,7 @@ using Volo.Abp.Application.Services;
 
 namespace Wechaty.OpenApi.Wechaty
 {
-    public interface ITagService: IApplicationService
+    public interface ITagAppService: IApplicationService
     {
         Task TagContactAddAsync(string tagId, string contactId);
         Task TagContactDeleteAsync(string tagId);

@@ -12,7 +12,7 @@ namespace Wechaty.OpenApi.Wechaty
     {
         Task<FriendshipPayload> FriendshipPayloadAsync(string friendshipId);
         Task FriendshipAcceptAsync(string friendshipId);
-        Task FriendshipAddAsync(string contactId, string? hello);
+        Task FriendshipAddAsync(AddFriendShipInput input);
         Task<string?> FriendshipSearchPhoneAsync(string phone);
         Task<string?> FriendshipSearchWeixinAsync(string weixin);
     }

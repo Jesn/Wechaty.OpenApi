@@ -13,4 +13,9 @@
     <PackageReference Include="Wechaty.Module.Puppet" Version="0.2.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Wechaty\Room\" />
+    <Folder Include="Wechaty\Tag\" />
+  </ItemGroup>
+
 </Project>

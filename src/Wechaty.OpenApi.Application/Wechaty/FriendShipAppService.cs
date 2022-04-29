@@ -5,7 +5,7 @@ using Wechaty.Module.Puppet.Schemas;
 
 namespace Wechaty.OpenApi.Wechaty
 {
-    public class FriendShipAppService:OpenApiAppService,IFriendShipAppService
+    public class FriendShipAppService : OpenApiAppService, IFriendShipAppService
     {
         private readonly IGrpcClientFactory _grpcClientFactory;
         private readonly WechatyPuppetClient _grpcClient;
@@ -20,9 +20,9 @@ namespace Wechaty.OpenApi.Wechaty
             await _grpcClient.FriendshipAcceptAsync(friendshipId);
         }
 
-        public async Task FriendshipAddAsync(string contactId, string hello)
+        public async Task FriendshipAddAsync(AddFriendShipInput input)
         {
-            await _grpcClient.FriendshipAddAsync(contactId, hello);
+            await _grpcClient.FriendshipAddAsync(input.ContactId, input.Hello);
         }
 
         public async Task<FriendshipPayload> FriendshipPayloadAsync(string friendshipId)
@@ -33,13 +33,13 @@ namespace Wechaty.OpenApi.Wechaty
 
         public async Task<string> FriendshipSearchPhoneAsync(string phone)
         {
-           var response=await _grpcClient.FriendshipSearchPhoneAsync(phone);
+            var response = await _grpcClient.FriendshipSearchPhoneAsync(phone);
             return response;
         }
 
         public async Task<string> FriendshipSearchWeixinAsync(string weixin)
         {
-            var response=await _grpcClient.FriendshipSearchWeixinAsync(weixin);
+            var response = await _grpcClient.FriendshipSearchWeixinAsync(weixin);
             return response;
         }
     }

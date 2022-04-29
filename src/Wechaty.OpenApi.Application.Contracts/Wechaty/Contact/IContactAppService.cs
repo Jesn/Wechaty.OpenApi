@@ -13,7 +13,7 @@ namespace Wechaty.OpenApi.Wechaty
     {
         Task<ContactPayload> ContactPayloadAsync(string contactId);
         Task<string> ContactAliasAsync(string contactId);
-        Task ContactAliasAsync(string contactId, string? alias);
+        Task ContactAliasAsync(AliasInput input);
         Task<FileBox> ContactAvatarAsync(string contactId);
         Task ContactAvatarAsync(string contactId, FileBox file);
         Task<List<string>> ContactListAsync();

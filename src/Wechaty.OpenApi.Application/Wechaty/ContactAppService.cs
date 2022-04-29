@@ -27,9 +27,9 @@ namespace Wechaty.OpenApi.Wechaty
             return response;
         }
 
-        public async Task ContactAliasAsync(string contactId, string alias)
+        public async Task ContactAliasAsync(AliasInput input)
         {
-            await _grpcClient.ContactAliasAsync(contactId, alias);
+            await _grpcClient.ContactAliasAsync(input.ContactId, input.Alias);
         }
 
         public async Task<FileBox> ContactAvatarAsync(string contactId)

@@ -33,15 +33,15 @@ namespace Wechaty.OpenApi.Wechaty
             return response;
         }
 
-        public async Task<FileBox> MessageImageAsync(string messageId, ImageType imageType)
+        public async Task<FileBox> MessageImageAsync(MessageImageInput input)
         {
-            var response = await _grpcClient.MessageImageAsync(messageId, imageType);
+            var response = await _grpcClient.MessageImageAsync(input.MessageId, input.ImageType);
             return response;
         }
 
-        public async Task<byte[]> MessageImageStreamAsync(string messageId, ImageType imageType, CancellationToken cancellationToken = default)
+        public async Task<byte[]> MessageImageStreamAsync(MessageImageInput input, CancellationToken cancellationToken = default)
         {
-            var response = await _grpcClient.MessageImageStreamAsync(messageId, imageType, cancellationToken);
+            var response = await _grpcClient.MessageImageStreamAsync(input.MessageId, input.ImageType, cancellationToken);
             return response;
         }
 
@@ -63,9 +63,9 @@ namespace Wechaty.OpenApi.Wechaty
             return result;
         }
 
-        public async Task<string> MessageSendContactAsync(string conversationId, string contactId)
+        public async Task<string> MessageSendContactAsync(SendContactInput input)
         {
-            var response = await _grpcClient.MessageSendContactAsync(conversationId, contactId);
+            var response = await _grpcClient.MessageSendContactAsync(input.ConversationId, input.ContactId);
             return response;
         }
 
@@ -87,9 +87,9 @@ namespace Wechaty.OpenApi.Wechaty
             return response;
         }
 
-        public async Task<string> MessageSendTextAsync(string conversationId, string text, IEnumerable<string> mentionIdList)
+        public async Task<string> MessageSendTextAsync(SendTextInput input)
         {
-            var response = await _grpcClient.MessageSendTextAsync(conversationId, text, mentionIdList);
+            var response = await _grpcClient.MessageSendTextAsync(input.ConversationId, input.Text, input.MentionIdList);
             return response;
         }
 

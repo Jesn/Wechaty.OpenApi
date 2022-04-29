@@ -8,7 +8,7 @@ using Wechaty.GrpcClient.Factory;
 
 namespace Wechaty.OpenApi.Wechaty
 {
-    public class TagAppService : OpenApiAppService, ITagService
+    public class TagAppService : OpenApiAppService, ITagAppService
     {
         private readonly IGrpcClientFactory _grpcClientFactory;
         private readonly WechatyPuppetClient _grpcClient;
