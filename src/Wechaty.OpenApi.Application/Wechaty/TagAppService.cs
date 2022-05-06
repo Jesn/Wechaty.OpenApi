@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Authorization;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,17 +11,15 @@ namespace Wechaty.OpenApi.Wechaty
 {
     public class TagAppService : OpenApiAppService, ITagAppService
     {
-        private readonly IGrpcClientFactory _grpcClientFactory;
-        private readonly WechatyPuppetClient _grpcClient;
         public TagAppService(IGrpcClientFactory grpcClientFactory)
+            :base(grpcClientFactory)
         {
-            _grpcClientFactory = grpcClientFactory;
-            _grpcClient = _grpcClientFactory.GetClient("Demo");
+           
         }
 
         public async Task TagContactAddAsync(string tagId, string contactId)
         {
-           await _grpcClient.TagContactAddAsync(tagId, contactId);
+            await _grpcClient.TagContactAddAsync(tagId, contactId);
         }
 
         public async Task TagContactDeleteAsync(string tagId)

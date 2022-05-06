@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Authorization;
+using System.Threading.Tasks;
 using Wechaty.Grpc.Client;
 using Wechaty.GrpcClient.Factory;
 using Wechaty.Module.Puppet.Schemas;
@@ -7,12 +8,10 @@ namespace Wechaty.OpenApi.Wechaty
 {
     public class FriendShipAppService : OpenApiAppService, IFriendShipAppService
     {
-        private readonly IGrpcClientFactory _grpcClientFactory;
-        private readonly WechatyPuppetClient _grpcClient;
         public FriendShipAppService(IGrpcClientFactory grpcClientFactory)
+            :base(grpcClientFactory)
         {
-            _grpcClientFactory = grpcClientFactory;
-            _grpcClient = _grpcClientFactory.GetClient("Demo");
+           
         }
 
         public async Task FriendshipAcceptAsync(string friendshipId)

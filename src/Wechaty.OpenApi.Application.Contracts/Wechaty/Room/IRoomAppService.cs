@@ -24,7 +24,7 @@ namespace Wechaty.OpenApi.Wechaty
         Task<RoomMemberPayload> RoomMemberPayloadAsync(string roomId, string contactId);
         Task<string> RoomQRCodeAsync(string roomId);
         Task RoomQuitAsync(string roomId);
-        Task<string> RoomTopicAsync(string roomId);
+        //Task<string> RoomTopicAsync(string roomId);
         Task RoomTopicAsync(string roomId, string topic);
 
     }

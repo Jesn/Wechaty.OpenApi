@@ -63,6 +63,8 @@ public class OpenApiHttpApiHostModule : AbpModule
                     .AllowCredentials();
             });
         });
+
+        context.Services.AddWechatyGrpc();
     }
 
     public override void OnApplicationInitialization(ApplicationInitializationContext context)

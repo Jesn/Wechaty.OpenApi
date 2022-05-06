@@ -51,7 +51,7 @@ namespace Wechaty.OpenApi.Wechaty
         }
 
         [HttpPost]
-        [Route("Create")]
+        [Route("create")]
         public Task<string> RoomCreateAsync(IEnumerable<string> contactIdList, string topic)
         {
             return _roomAppService.RoomCreateAsync(contactIdList, topic);
@@ -120,12 +120,13 @@ namespace Wechaty.OpenApi.Wechaty
             return _roomAppService.RoomQuitAsync(roomId);
         }
 
-        [HttpGet]
-        [Route("topic")]
-        public Task<string> RoomTopicAsync(string roomId)
-        {
-            return _roomAppService.RoomTopicAsync(roomId);
-        }
+        //这个其实也是更新操作，暂时先停用该接口
+        //[HttpGet]
+        //[Route("topic")]
+        //public Task<string> RoomTopicAsync(string roomId)
+        //{
+        //    return _roomAppService.RoomTopicAsync(roomId);
+        //}
 
         [HttpPut]
         [Route("topic")]

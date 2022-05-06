@@ -3,56 +3,60 @@
 ## 接口测试
 
 ### Contact
-- [x] [GET] `/api/Contact/ContactAlia` 目前Padlocal协议返回的数据是空，不知道其协议是否能返回数据
-- [x] [PUT] `/api/Contact/ContactAlias`
-- [x] [GET] `/api/Contact/ContactAvatar`
-- [ ] [PUT] `/api/Contact/ContactAvatar`
-- [x] [GET] `/api/Contact/ContactList`
-- [x] [PUT] `/api/Contact/ContactSelfName`
-- [x] [GET] `/api/Contact/ContactSelfQRCode`
-- [x] [PUT] `/api/Contact/ContactSelfSignature`
+- [x] [GET] `/api/Contact/alias` 目前Padlocal协议返回的数据是空，不知道其协议是否能返回数据
+- [x] [PUT] `/api/Contact/alias`
+- [x] [GET] `/api/Contact/avatar`
+- [ ] [PUT] `/api/Contact/avatar`
+- [x] [GET] `/api/Contact/list`
+- [x] [PUT] `/api/Contact/selfName`
+- [x] [GET] `/api/Contact/selfQRCode`
+- [x] [PUT] `/api/Contact/selfSignature` 
+- [x] [PUT] `/api/Contact/payload`
 
 
 ### FriendShip
-- [ ] [PUT] `/api/FriendShip/FriendshipAccept`
-- [ ] [PUT] `/api/FriendShip/FriendshipAdd`
-- [ ] [GET] `/api/FriendShip/FriendshipSearchPhone`
-- [ ] [GET] `/api/FriendShip/FriendshipSearchWeixin`
+- [ ] [PUT] `/api/FriendShip/accept`
+- [ ] [PUT] `/api/FriendShip/addFriend`
+- [ ] [GET] `/api/FriendShip/payload`
+- [ ] [GET] `/api/FriendShip/searchByPhone`
+- [ ] [GET] `/api/FriendShip/searchByWeiXin`
 
 ### Message
-- [ ] [GET] `​/api​/Message​/MessageContact` --> *` ERR PuppetServiceImpl grpcError() messageContact() rejection: not implement`*
-- [ ] [GET] `/api/Message/MessageFile` *rpc.Core.RpcException: Status(StatusCode="Internal", Detail="[tid:85a66eef] [353ms] download file failed，需要特殊处理下*
-- [ ] [GET] `/api/Message/MessageImage`
-- [x] [GET] `/api/Message/MessageImageStream`
-- [x] [GET] `/api/Message/MessageMiniProgram`
-- [ ] [put] `/api/Message/MessageRecall`  
+- [ ] [GET] `​/api​/Message​/messageContact` --> *` ERR PuppetServiceImpl grpcError() messageContact() rejection: not implement`*
+- [ ] [GET] `/api/Message/messageFile` *rpc.Core.RpcException: Status(StatusCode="Internal", Detail="[tid:85a66eef] [353ms] download file failed，需要特殊处理下*
+- [ ] [GET] `/api/Message/messageImage`
+- [x] [GET] `/api/Message/messageImageStream`
+- [x] [GET] `/api/Message/messageMiniProgram`
+- [ ] [put] `/api/Message/recall`  
     *__异常：`request has been cancelled for reason: SERVER_ERROR: 2 UNKNOWN: [tid:70f1ff83] wechat bad request error`<strong>__*
-- [x] [PUT] `/api/Message/MessageSendContact`
-- [ ] [PUT] `/api/Message/MessageSendFile`
-- [x] [PUT] `/api/Message/MessageSendMiniProgram`
-- [x] [PUT] `/api/Message/MessageSendText`
-- [x] [PUT] `/api/Message/MessageSendUrl`
-- [x] [PUT] `/api/Message/MessageUrl`
+- [x] [PUT] `/api/Message/sendContact`
+- [ ] [PUT] `/api/Message/sendFile`
+- [x] [PUT] `/api/Message/sendMiniProgram`
+- [x] [PUT] `/api/Message/sendText`
+- [x] [PUT] `/api/Message/SendUrl`
+- [x] [PUT] `/api/Message/messageUrl`
+- [ ] [PUT]`/api/Message/payload`
 
 ### Room
-- [x] [PUT] `/api/Room/GetRoomPayload`
-- [x] [PUT] `/api/Room/RoomAdd`
-- [x] [GET] `/api/Room/RoomAnnounce`
-- [x] [PUT] `/api/Room/RoomAnnounce` 如果当前账号不是群主或者群管理员的话，修改公告会报错`request has been cancelled for reason: SERVER_ERROR: 2`
-- [x] [GET] `/api/Room/RoomAvatar`
-- [ ] [POST] `/api/Room/RoomCreate` --> *`ERR PuppetServiceImpl grpcError() roomCreate() rejection: roomId is required`*
-- [x] [DELETE] `/api/Room/RoomDel` 当前用户作为管理员，不能移除其他管理员，只能移除普通成员
-- [ ] [PUT] `/api/Room/RoomInvitationAccept`
-- [x] [GET] `/api/Room/RoomList`
-- [x] [GET] `/api/Room/RoomMemberList`
-- [ ] [GET] `/api/Room/RoomQRCode` --> `ERR PuppetServiceImpl grpcError() roomQRCode() rejection: bufferToQrcode(buf) fail!`
-- [x] [PUT] `/api/Room/RoomQuit`
-- [ ] [GET] `/api/Room/RoomTopic` 这个其实也是更新操作，暂时先停用该接口
-- [x] [PUT] `/api/Room/RoomTopic`
+- [x] [PUT] `/api/Room/payload`
+- [x] [PUT] `/api/Room/Add`
+- [x] [GET] `/api/Room/announce`
+- [x] [PUT] `/api/Room/announce` 如果当前账号不是群主或者群管理员的话，修改公告会报错`request has been cancelled for reason: SERVER_ERROR: 2`
+- [x] [GET] `/api/Room/avatar`
+- [ ] [POST] `/api/Room/create` --> *`ERR PuppetServiceImpl grpcError() roomCreate() rejection: roomId is required`*
+- [x] [DELETE] `/api/Room/delete` 当前用户作为管理员，不能移除其他管理员，只能移除普通成员
+- [ ] [PUT] `/api/Room/accept`
+- [x] [GET] `/api/Room/list`
+- [x] [GET] `/api/Room/members`
+- [ ] [GET] `/api/Room/memberPayload`
+- [ ] [GET] `/api/Room/qrcode` --> `ERR PuppetServiceImpl grpcError() roomQRCode() rejection: bufferToQrcode(buf) fail!`
+- [x] [PUT] `/api/Room/quit`
+- [ ] [GET] `/api/Room/topic` 这个其实也是更新操作，暂时先停用该接口
+- [x] [PUT] `/api/Room/topic`
 
 ### Tag
-- [x] [POST] `/api/Tag/TagContactAdd`
-- [x] [DELETE] `/api/Tag/TagContactDelete/{tagId}`
-- [x] [GET] `/api/Tag/TagContactList/{contactId}`
-- [x] [GET] `/api/Tag/TagContactList`
-- [x] [PUT] `/api/Tag/TagContactRemove`
+- [x] [POST] `/api/Tag/contactAddTag`
+- [x] [DELETE] `/api/Tag/delete`
+- [x] [GET] `/api/Tag/list/{contactId}`
+- [x] [GET] `/api/Tag/list`
+- [x] [PUT] `/api/Tag/contactRemoveTag`

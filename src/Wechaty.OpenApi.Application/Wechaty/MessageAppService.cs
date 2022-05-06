@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Authorization;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,12 +14,10 @@ namespace Wechaty.OpenApi.Wechaty
 {
     public class MessageAppService : OpenApiAppService, IMessageAppService
     {
-        private readonly IGrpcClientFactory _grpcClientFactory;
-        private readonly WechatyPuppetClient _grpcClient;
         public MessageAppService(IGrpcClientFactory grpcClientFactory)
+            :base(grpcClientFactory)
         {
-            _grpcClientFactory = grpcClientFactory;
-            _grpcClient = _grpcClientFactory.GetClient("Demo");
+          
         }
 
         public async Task<string> MessageContactAsync(string messageId)

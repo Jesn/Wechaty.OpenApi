@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Authorization;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,12 +12,10 @@ namespace Wechaty.OpenApi.Wechaty
 {
     public class RoomAppService : OpenApiAppService, IRoomAppService
     {
-        private readonly IGrpcClientFactory _grpcClientFactory;
-        private readonly WechatyPuppetClient _grpcClient;
         public RoomAppService(IGrpcClientFactory grpcClientFactory)
+            :base(grpcClientFactory)
         {
-            _grpcClientFactory = grpcClientFactory;
-            _grpcClient = _grpcClientFactory.GetClient("Demo");
+
         }
 
         public async Task RoomAddAsync(string roomId, string contactId)
@@ -26,7 +25,7 @@ namespace Wechaty.OpenApi.Wechaty
 
         public async Task<string> RoomAnnounceAsync(string roomId)
         {
-            var response=await _grpcClient.RoomAnnounceAsync(roomId);
+            var response = await _grpcClient.RoomAnnounceAsync(roomId);
             return response;
         }
 
@@ -65,7 +64,7 @@ namespace Wechaty.OpenApi.Wechaty
 
         public async Task<IReadOnlyList<string>> RoomListAsync()
         {
-            var list =await _grpcClient.RoomListAsync();
+            var list = await _grpcClient.RoomListAsync();
             return list;
         }
 
@@ -89,7 +88,7 @@ namespace Wechaty.OpenApi.Wechaty
 
         public async Task<string> RoomQRCodeAsync(string roomId)
         {
-            var qrCode =await  _grpcClient.RoomQRCodeAsync(roomId);
+            var qrCode = await _grpcClient.RoomQRCodeAsync(roomId);
             return qrCode;
         }
 

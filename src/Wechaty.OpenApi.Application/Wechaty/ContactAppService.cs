@@ -1,8 +1,4 @@
-﻿using github.wechaty.grpc.puppet;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Wechaty.Grpc.Client;
 using Wechaty.GrpcClient.Factory;
@@ -13,12 +9,10 @@ namespace Wechaty.OpenApi.Wechaty
 {
     public class ContactAppService : OpenApiAppService, IContactAppService
     {
-        private readonly IGrpcClientFactory _grpcClientFactory;
-        private readonly WechatyPuppetClient _grpcClient;
         public ContactAppService(IGrpcClientFactory grpcClientFactory)
+            :base(grpcClientFactory)
         {
-            _grpcClientFactory = grpcClientFactory;
-            _grpcClient = _grpcClientFactory.GetClient("Demo");
+           
         }
 
         public Task<string> ContactAliasAsync(string contactId)

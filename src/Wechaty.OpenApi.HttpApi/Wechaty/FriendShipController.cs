@@ -20,7 +20,7 @@ namespace Wechaty.OpenApi.Wechaty
             _friendShipAppService = friendShipAppService;
         }
 
-        [HttpGet]
+        [HttpPut]
         [Route("accept")]
         public Task FriendshipAcceptAsync(string friendshipId)
         {
@@ -42,14 +42,14 @@ namespace Wechaty.OpenApi.Wechaty
         }
 
         [HttpGet]
-        [Route("SearchByPhone")]
+        [Route("searchByPhone")]
         public Task<string> FriendshipSearchPhoneAsync(string phone)
         {
             return _friendShipAppService.FriendshipSearchPhoneAsync(phone);
         }
 
         [HttpGet]
-        [Route("SearchByWeiXin")]
+        [Route("searchByWeiXin")]
         public Task<string> FriendshipSearchWeixinAsync(string weixin)
         {
             return _friendShipAppService.FriendshipSearchWeixinAsync(weixin);
