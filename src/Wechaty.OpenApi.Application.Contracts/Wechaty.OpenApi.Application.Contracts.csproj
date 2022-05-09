@@ -9,8 +9,9 @@
   <ItemGroup>
     <PackageReference Include="Volo.Abp.Ddd.Application.Contracts" Version="5.2.1" />
     <PackageReference Include="Volo.Abp.Authorization" Version="5.2.1" />
-    <PackageReference Include="Wechaty.Module.FileBox" Version="0.2.5" />
-    <PackageReference Include="Wechaty.Module.Puppet" Version="0.2.5" />
+    <PackageReference Include="Volo.Abp.EventBus" Version="5.2.1" />
+    <PackageReference Include="Wechaty.Module.FileBox" Version="0.2.6" />
+    <PackageReference Include="Wechaty.Module.Puppet" Version="0.2.6" />
   </ItemGroup>
 
   <ItemGroup>

@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp.AspNetCore.Mvc" Version="5.2.1" />
+    <PackageReference Include="Volo.Abp.AspNetCore.SignalR" Version="5.2.1" />
     <ProjectReference Include="..\Wechaty.OpenApi.Application.Contracts\Wechaty.OpenApi.Application.Contracts.csproj" />
   </ItemGroup>
 

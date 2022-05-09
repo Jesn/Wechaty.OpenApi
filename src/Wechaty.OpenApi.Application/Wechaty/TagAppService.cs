@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Volo.Abp.Users;
 using Wechaty.Grpc.Client;
 using Wechaty.GrpcClient.Factory;
 
@@ -11,10 +12,10 @@ namespace Wechaty.OpenApi.Wechaty
 {
     public class TagAppService : OpenApiAppService, ITagAppService
     {
-        public TagAppService(IGrpcClientFactory grpcClientFactory)
-            :base(grpcClientFactory)
+        public TagAppService(IGrpcClientFactory grpcClientFactory, ICurrentUser currentUser)
+            : base(grpcClientFactory, currentUser)
         {
-           
+
         }
 
         public async Task TagContactAddAsync(string tagId, string contactId)

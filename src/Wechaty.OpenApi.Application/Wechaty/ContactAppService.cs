@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Wechaty.Grpc.Client;
+using Volo.Abp.Users;
 using Wechaty.GrpcClient.Factory;
 using Wechaty.Module.Filebox;
 using Wechaty.Module.Puppet.Schemas;
@@ -9,8 +9,8 @@ namespace Wechaty.OpenApi.Wechaty
 {
     public class ContactAppService : OpenApiAppService, IContactAppService
     {
-        public ContactAppService(IGrpcClientFactory grpcClientFactory)
-            :base(grpcClientFactory)
+        public ContactAppService(IGrpcClientFactory grpcClientFactory,ICurrentUser currentUser)
+            :base(grpcClientFactory,currentUser)
         {
            
         }

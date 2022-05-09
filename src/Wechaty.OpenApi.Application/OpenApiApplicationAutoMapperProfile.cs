@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+
 using Wechaty.Grpc.Client;
 using Wechaty.OpenApi.Wechaty;
 
@@ -13,5 +14,7 @@ public class OpenApiApplicationAutoMapperProfile : Profile
          * into multiple profile classes for a better organization. */
 
         CreateMap<WechatyOption, GrpcPuppetOption>();
+
+        CreateMap<github.wechaty.grpc.puppet.EventType, Handler.EventType>();
     }
 }

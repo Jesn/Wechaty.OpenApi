@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using System.Threading.Tasks;
+using Volo.Abp.Users;
 using Wechaty.Grpc.Client;
 using Wechaty.GrpcClient.Factory;
 using Wechaty.Module.Puppet.Schemas;
@@ -8,8 +9,8 @@ namespace Wechaty.OpenApi.Wechaty
 {
     public class FriendShipAppService : OpenApiAppService, IFriendShipAppService
     {
-        public FriendShipAppService(IGrpcClientFactory grpcClientFactory)
-            :base(grpcClientFactory)
+        public FriendShipAppService(IGrpcClientFactory grpcClientFactory, ICurrentUser currentUser)
+            :base(grpcClientFactory,currentUser)
         {
            
         }

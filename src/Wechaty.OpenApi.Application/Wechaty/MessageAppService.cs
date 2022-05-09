@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Volo.Abp.Users;
 using Wechaty.Grpc.Client;
 using Wechaty.GrpcClient.Factory;
 using Wechaty.Module.Filebox;
@@ -14,8 +15,8 @@ namespace Wechaty.OpenApi.Wechaty
 {
     public class MessageAppService : OpenApiAppService, IMessageAppService
     {
-        public MessageAppService(IGrpcClientFactory grpcClientFactory)
-            :base(grpcClientFactory)
+        public MessageAppService(IGrpcClientFactory grpcClientFactory, ICurrentUser currentUser)
+            :base(grpcClientFactory,currentUser)
         {
           
         }

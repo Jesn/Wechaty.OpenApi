@@ -8,7 +8,7 @@ namespace Wechaty.OpenApi.Wechaty
 {
     public class WechatyOption
     {
-        //public string Name { get; set; }
+        public string Name { get; set; }
         public string EndPoint { get; set; }
         public string Token { get; set; }
     }

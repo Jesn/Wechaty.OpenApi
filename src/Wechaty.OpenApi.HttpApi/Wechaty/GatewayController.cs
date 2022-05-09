@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Volo.Abp;
 
@@ -22,7 +23,7 @@ namespace Wechaty.OpenApi.Wechaty
 
         [HttpPost]
         [Route("start")]
-        public Task StartAsync(WechatyOption wechatyOption)
+        public Task StartAsync(WechatyOption wechatyOption, CancellationToken cancellationToken = default)
         {
             return _gatewayAppService.StartAsync(wechatyOption);
         }

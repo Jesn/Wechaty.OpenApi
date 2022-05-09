@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Volo.Abp.Users;
 using Wechaty.Grpc.Client;
 using Wechaty.GrpcClient.Factory;
 using Wechaty.Module.Filebox;
@@ -12,8 +13,8 @@ namespace Wechaty.OpenApi.Wechaty
 {
     public class RoomAppService : OpenApiAppService, IRoomAppService
     {
-        public RoomAppService(IGrpcClientFactory grpcClientFactory)
-            :base(grpcClientFactory)
+        public RoomAppService(IGrpcClientFactory grpcClientFactory, ICurrentUser currentUser)
+            :base(grpcClientFactory, currentUser)
         {
 
         }
