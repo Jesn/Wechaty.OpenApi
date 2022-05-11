@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Grpc.Core;
+using Microsoft.AspNetCore.Authorization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Volo.Abp;
 using Volo.Abp.EventBus.Distributed;
 using Volo.Abp.EventBus.Local;
 using Volo.Abp.Users;
@@ -20,45 +22,36 @@ namespace Wechaty.OpenApi.Wechaty
     public class GatewayAppService : OpenApiAppService, IGatewayAppService
     {
 
-        private readonly IDistributedEventBus _localEventBus;
+        private readonly IDistributedEventBus _eventBus;
 
-        public GatewayAppService(IGrpcClientFactory grpcClientFactory, ICurrentUser currentUser, IDistributedEventBus localEventBus)
+        public GatewayAppService(IGrpcClientFactory grpcClientFactory, ICurrentUser currentUser, IDistributedEventBus eventBus)
             : base(grpcClientFactory, currentUser)
         {
-            _localEventBus = localEventBus;
+            _eventBus = eventBus;
         }
 
         public async Task StartAsync(WechatyOption wechatyOption, CancellationToken cancellationToken = default)
         {
-            var option = ObjectMapper.Map<WechatyOption, Grpc.Client.GrpcPuppetOption>(wechatyOption);
+            try
+            {
+                var option = ObjectMapper.Map<WechatyOption, Grpc.Client.GrpcPuppetOption>(wechatyOption);
 
-            // TODO 如果改成多实例，WechatyOption 里面的Name字段则要放开
-            option.Name = WechatyPuppetConst.DefaultPuppetClientName;
+                // TODO 如果改成多实例，WechatyOption 里面的Name字段则要放开
+                option.Name = WechatyPuppetConst.DefaultPuppetClientName;
 
-            var _grpcClient = _grpcClientFactory.CreateClient(option);
-            await _grpcClient.StartAsync();
+                var _grpcClient = _grpcClientFactory.CreateClient(option);
+                await _grpcClient.StartAsync();
 
-            //_ = Task.Run(async () =>
-            //  {
-            //      var eventStream = await _grpcClient.EventStreamAsync();
-            //      while (eventStream.ResponseStream.MoveNext(cancellationToken).Result)
-            //      {
-            //        //OnGrpcStreamEvent(eventStream.ResponseStream.Current);
-            //        //eventStream.ResponseStream.Current;
-            //        Console.WriteLine(eventStream.ResponseStream.Current.ToString());
-            //      }
-            //  });
-
-            _ = EventStreamAsync(_grpcClient, wechatyOption);
-
+                _ = EventStreamAsync(_grpcClient, wechatyOption);
+            }
+            catch (RpcException ex)
+            {
+                throw new UserFriendlyException(ex.Status.Detail,ex.Status.StatusCode.ToString());
+            }
         }
 
 
-        private async Task StartGrpClient(GrpcPuppetOption option)
-        {
-            var _grpcClient = _grpcClientFactory.CreateClient(option);
-            await _grpcClient.StartAsync();
-        }
+
 
         private async Task EventStreamAsync(WechatyPuppetClient grpcClient, WechatyOption wechatyOption, CancellationToken cancellationToken = default)
         {
@@ -68,7 +61,7 @@ namespace Wechaty.OpenApi.Wechaty
                 var currentEvent = eventStream.ResponseStream.Current;
                 Console.WriteLine(currentEvent.ToString());
 
-              
+
                 EventStreamHandlerArgs args = new EventStreamHandlerArgs()
                 {
                     //UserId = _currentUser.GetId(),
@@ -81,7 +74,7 @@ namespace Wechaty.OpenApi.Wechaty
                     }
                 };
 
-                await _localEventBus.PublishAsync(args);
+                await _eventBus.PublishAsync(args);
             }
         }
 
