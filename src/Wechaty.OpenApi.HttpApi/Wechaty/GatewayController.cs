@@ -48,10 +48,7 @@ namespace Wechaty.OpenApi.Wechaty
         public async Task GetEvent(CancellationToken cancellationToken)
         {
             var httpContext = _httpContextAccessor.HttpContext;
-            if (httpContext.Request.ContentType != "text/event-stream; charset=utf-8")
-            {
-                httpContext.Response.ContentType = "text/event-stream; charset=utf-8";
-            }
+            httpContext.Response.ContentType = "text/event-stream; charset=utf-8";
 
             var data =
             $"id:{GuidGenerator.Create().ToString()}\n" +
@@ -82,16 +79,12 @@ namespace Wechaty.OpenApi.Wechaty
                 }
                 await eventGeneratorTask;
             }
-
         }
 
         private async Task EventGeneratorAsync(BlockingCollection<string> eventData, CancellationToken cacellationToken)
         {
             try
             {
-           
-
-
                 ConcurrentQueue<string> query = new ConcurrentQueue<string>();
 
                 _distributedEventBus.Subscribe<EventStreamHandlerArgs>(data =>
@@ -108,17 +101,8 @@ namespace Wechaty.OpenApi.Wechaty
 
                 if (!cacellationToken.IsCancellationRequested)
                 {
-
                     while (!eventData.IsCompleted)
                     {
-                        //if (list.Count > 0)
-                        //{
-                        var result =
-                         $"id:{GuidGenerator.Create().ToString()}\n" +
-                         $"retry:1000\n" +
-                         $"event:message\n" +
-                         $"data:{DateTime.Now:yyyy-MM-dd HH:mm:ss}\n\n";
-
                         //lock ((list as ICollection).SyncRoot)
                         //{
                         //    foreach (var item in list)
@@ -134,7 +118,6 @@ namespace Wechaty.OpenApi.Wechaty
                             eventData.Add(item);
                         }
 
-                        //}
                         await Task.Delay(1000, cacellationToken).ConfigureAwait(false);
                     }
                 }
