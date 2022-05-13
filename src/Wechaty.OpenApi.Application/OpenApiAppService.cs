@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using Volo.Abp;
+﻿using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Users;
 using Wechaty.Grpc.Client;
@@ -8,6 +6,7 @@ using Wechaty.GrpcClient.Factory;
 
 namespace Wechaty.OpenApi;
 
+[Authorize]
 public abstract class OpenApiAppService : ApplicationService
 {
     protected readonly IGrpcClientFactory _grpcClientFactory;
@@ -19,7 +18,7 @@ public abstract class OpenApiAppService : ApplicationService
     //    ObjectMapperContext = typeof(OpenApiApplicationModule);
     //}
 
-    protected OpenApiAppService(IGrpcClientFactory grpcClientFactory,ICurrentUser currentUser)
+    protected OpenApiAppService(IGrpcClientFactory grpcClientFactory, ICurrentUser currentUser)
     {
         ObjectMapperContext = typeof(OpenApiApplicationModule);
 
@@ -27,8 +26,6 @@ public abstract class OpenApiAppService : ApplicationService
 
         _grpcClientFactory = grpcClientFactory;
         _grpcClient = _grpcClientFactory.GetClient(WechatyPuppetConst.DefaultPuppetClientName);
-
-        
     }
 
 }

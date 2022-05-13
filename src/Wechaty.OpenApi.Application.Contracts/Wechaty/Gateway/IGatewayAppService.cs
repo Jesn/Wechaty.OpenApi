@@ -8,5 +8,7 @@ namespace Wechaty.OpenApi.Wechaty
     {
         Task StartAsync(WechatyOption wechatyOption, CancellationToken cancellationToken = default);
         Task StopAsync();
+
+        
     }
 }

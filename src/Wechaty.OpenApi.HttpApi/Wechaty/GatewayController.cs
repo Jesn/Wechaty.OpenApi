@@ -44,7 +44,7 @@ namespace Wechaty.OpenApi.Wechaty
         }
 
         [HttpGet]
-        [Route("getEvent")]
+        [Route("event")]
         public async Task GetEvent(CancellationToken cancellationToken)
         {
             var httpContext = _httpContextAccessor.HttpContext;
