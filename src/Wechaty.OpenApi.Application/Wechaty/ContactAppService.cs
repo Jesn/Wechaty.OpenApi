@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Volo.Abp.Users;
 using Wechaty.GrpcClient.Factory;
 using Wechaty.Module.Filebox;
-using Wechaty.Module.Puppet.Schemas;
+using Wechaty.Module.Schemas;
 
 namespace Wechaty.OpenApi.Wechaty
 {

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Services;
 using Wechaty.Module.Filebox;
-using Wechaty.Module.Puppet.Schemas;
+using Wechaty.Module.Schemas;
 
 namespace Wechaty.OpenApi.Wechaty
 {

@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Volo.Abp.AspNetCore.SignalR;
-using Wechaty.Module.Puppet.Schemas;
+using Wechaty.Module.Schemas;
 using Wechaty.OpenApi.Wechaty;
 
 namespace Wechaty.OpenApi.Handler
