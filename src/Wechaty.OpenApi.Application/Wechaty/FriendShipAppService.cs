@@ -1,9 +1,7 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Volo.Abp.Users;
-using Wechaty.Grpc.Client;
 using Wechaty.GrpcClient.Factory;
-using Wechaty.Module.Puppet.Schemas;
+using Wechaty.Module.Schemas;
 
 namespace Wechaty.OpenApi.Wechaty
 {
